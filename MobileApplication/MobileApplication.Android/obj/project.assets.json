@@ -684,24 +684,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pedro.medeiros\\.nuget\\packages\\": {},
+    "C:\\Users\\Pedro\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedro.medeiros\\Source\\Repos\\Travessia\\MobileApplication\\MobileApplication.Android\\MobileApplication.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Pedro\\Source\\Repos\\Travessia\\MobileApplication\\MobileApplication.Android\\MobileApplication.Android.csproj",
       "projectName": "MobileApplication.Android",
-      "projectPath": "C:\\Users\\pedro.medeiros\\Source\\Repos\\Travessia\\MobileApplication\\MobileApplication.Android\\MobileApplication.Android.csproj",
-      "packagesPath": "C:\\Users\\pedro.medeiros\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedro.medeiros\\Source\\Repos\\Travessia\\MobileApplication\\MobileApplication.Android\\obj\\",
+      "projectPath": "C:\\Users\\Pedro\\Source\\Repos\\Travessia\\MobileApplication\\MobileApplication.Android\\MobileApplication.Android.csproj",
+      "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pedro\\Source\\Repos\\Travessia\\MobileApplication\\MobileApplication.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\pedro.medeiros\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],

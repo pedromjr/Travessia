@@ -1,0 +1,5 @@
+C:\Users\Pedro\Source\Repos\Travessia\Core\bin\Debug\Core.dll
+C:\Users\Pedro\Source\Repos\Travessia\Core\bin\Debug\Core.pdb
+C:\Users\Pedro\Source\Repos\Travessia\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\Pedro\Source\Repos\Travessia\Core\obj\Debug\Core.dll
+C:\Users\Pedro\Source\Repos\Travessia\Core\obj\Debug\Core.pdb

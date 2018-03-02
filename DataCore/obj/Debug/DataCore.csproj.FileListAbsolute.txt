@@ -1,0 +1,6 @@
+C:\Users\Pedro\Source\Repos\Travessia\DataCore\bin\Debug\DataCore.dll
+C:\Users\Pedro\Source\Repos\Travessia\DataCore\bin\Debug\DataCore.pdb
+C:\Users\Pedro\Source\Repos\Travessia\DataCore\obj\Debug\DataCore.csproj.CoreCompileInputs.cache
+C:\Users\Pedro\Source\Repos\Travessia\DataCore\obj\Debug\DataCore.dll
+C:\Users\Pedro\Source\Repos\Travessia\DataCore\obj\Debug\DataCore.pdb
+C:\Users\Pedro\Source\Repos\Travessia\DataCore\obj\Debug\DataCore.csprojResolveAssemblyReference.cache
