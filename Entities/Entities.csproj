@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardPayment.cs" />
+    <Compile Include="Competition.cs" />
     <Compile Include="Competitor.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GTUser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

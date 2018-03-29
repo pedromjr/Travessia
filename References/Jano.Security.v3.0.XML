@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jano.Security.v3.0</name>
+    </assembly>
+    <members>
+        <member name="T:Jano.Security.Erp.AuthenticationManager">
+            <summary>
+            Fornece métodos para autenticação de usuários do MicrovixERP.
+            </summary>
+        </member>
+        <member name="M:Jano.Security.Erp.AuthenticationManager.Authenticate(System.String,System.String,System.String)">
+            <summary>
+            Realiza a autenticação de um usuário do MicrovixERP através do login, senha e frase.
+            </summary>
+            <param name="userName">O nome de usuário (login).</param>
+            <param name="password">A senha.</param>
+            <param name="passphrase">A frase.</param>
+            <returns>
+            Se as credenciais de acesso forem válidas, retorna um objeto <see cref="T:Jano.Security.Erp.User"/> contendo 
+            informações sobre o usuário autenticado. Em caso contrário, retorna null.
+            </returns>
+        </member>
+        <member name="M:Jano.Security.Erp.AuthenticationManager.Authenticate(System.Guid)">
+            <summary>
+            Realiza a autenticação de um usuário através de um token de autenticação gerado em outro sistema.
+            </summary>
+            <param name="authenticationToken">O token de autenticação utilizado para validar o usuário.</param>
+            <returns>
+            Se o token for válido, retorna um objeto <see cref="T:Jano.Security.Erp.User"/> contendo 
+            informações sobre o usuário autenticado. Em caso contrário, retorna null.
+            </returns>
+            <remarks>
+            <para>
+            Este método deve ser utilizado para autenticação entre sistemas. Por exemplo, o usuário se autentica
+            no sistema A usando o método <see cref="M:Jano.Security.Erp.AuthenticationManager.Authenticate(System.String,System.String,System.String)"/>. A partir do sistema A
+            ele deseja acessar o sistema B. Então o sistema A cria um token de autenticação, usando o método
+            <see cref="M:Jano.Security.Erp.AuthenticationManager.CreateAuthenticationToken(System.Int32,System.Int32,System.Int32)"/>, e passa este token para o sistema B. Então, o 
+            sistema B utiliza este método para verificar se o token é válido e, desta forma, permitir acesso ao usuário.
+            </para>
+            <para>
+            O token de autenticação é apagado do banco de dados após a execução deste método, impossibilitando, 
+            desta forma, sua reutilização.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Jano.Security.Erp.AuthenticationManager.CreateAuthenticationToken(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Cria um token de autenticação e o insere na base de dados do MicrovixERP.
+            </summary>
+            <returns>O token de autenticação gerado.</returns>
+            <remarks>
+            Este método cria o token de autenticação que deve ser passado ao método <see cref="M:Jano.Security.Erp.AuthenticationManager.Authenticate(System.Guid)"/>.
+            </remarks>
+        </member>
+        <member name="T:Jano.Security.Erp.User">
+            <summary>
+            Representa um usuário autenticado no MicrovixERP.
+            </summary>
+        </member>
+        <member name="P:Jano.Security.Erp.User.UserId">
+            <summary>
+            Id do Usuário autenticado.
+            </summary>
+        </member>
+        <member name="P:Jano.Security.Erp.User.UserName">
+            <summary>
+            Nome de usuário do sistema (login).
+            </summary>
+        </member>
+        <member name="P:Jano.Security.Erp.User.Name">
+            <summary>
+            Nome completo da pessoa.
+            </summary>
+        </member>
+        <member name="P:Jano.Security.Erp.User.PortalId">
+            <summary>
+            Id do portal do usuário.
+            </summary>
+        </member>
+        <member name="P:Jano.Security.Erp.User.CompanyId">
+            <summary>
+            Id da empresa onde ele está autenticado.
+            </summary>
+        </member>
+    </members>
+</doc>

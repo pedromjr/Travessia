@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jano.Services.v3.0</name>
+    </assembly>
+    <members>
+        <member name="T:Jano.Services.Wcf.ServiceClient`1">
+             <summary>
+             Wrapper utilizado para invocar serviços WCF. Após a utilização dos serviços, este wrapper
+             faz a correta liberação dos recursos alocados pelas requisições.
+             </summary>
+             <typeparam name="TClient">Tipo do cliente utilizado para conectar no web service.</typeparam>
+             <example>
+             <para>Segue abaixo um exemplo de uso desta classe:</para>
+             <code lang="C#">
+             // Classe proxy do Web Service a ser acessado.
+             ClientType client = new ClientType();
+            
+             // Cria uma instância do ServiceClient dentro do bloco using. Ao final deste bloco
+             // os recursos alocados para as chamadas ao web service serão liberados da memória.
+             using (ServiceClient{ClientType} serviceClient = new ServiceClient{ClientType}(client))
+             {
+                 return serviceClient.Invoke{string}(p => p.GetData(1));
+             } 
+             </code>
+             </example>
+        </member>
+        <member name="F:Jano.Services.Wcf.ServiceClient`1._client">
+            <summary>
+            Instância do cliente que está se conectando ao serviço.
+            </summary>
+        </member>
+        <member name="M:Jano.Services.Wcf.ServiceClient`1.#ctor(`0)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="client">Instância do cliente utilizado para conectar no webservice.</param>
+        </member>
+        <member name="M:Jano.Services.Wcf.ServiceClient`1.Invoke(System.Action{`0})">
+            <summary>
+            Invoca uma operação, cujo retorno é do tipo void, em um web service.
+            </summary>
+            <param name="execute">Operação a ser executada no web service.</param>
+        </member>
+        <member name="M:Jano.Services.Wcf.ServiceClient`1.Invoke``1(System.Func{`0,``0})">
+            <summary>
+            Invoca uma operação, cujo retorno é do tipo <typeparamref name="TResult"/>, em um web service.
+            </summary>
+            <typeparam name="TResult">Tipo de retorno da operação executada no web service.</typeparam>
+            <param name="execute">Operação a ser executada no web service.</param>
+            <returns>
+            O objeto, do tipo <typeparamref name="TResult"/>, resultado da execução da operação 
+            no web service.
+            </returns>
+        </member>
+        <member name="M:Jano.Services.Wcf.ServiceClient`1.Dispose">
+            <summary>
+            Limpa os recursos alocados no consumo de um serviço.
+            </summary>
+        </member>
+    </members>
+</doc>

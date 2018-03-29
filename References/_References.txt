@@ -1,0 +1,9 @@
+Diretório utilizado para armazenar referências externas ao software que está sendo desenvolvido.
+
+Esta pasta visa garantir que a versão atual do software em desenvolvimento não sofrerá impactos em caso de alteração da versão das bibliotecas referenciadas. Esse é um dos motivos da pasta References permanecer dentro do Trunk, pois os Branches sempre levarão todo o Trunk, garantindo que as referências compartilhadas não sejam substituídas acidentalmente.
+
+Exemplo de Bibliotecas Externas:
+
+- EntityFramework.dll
+- DevExpress.Web.v11.1.dll
+- Microvix.v1.0.dll

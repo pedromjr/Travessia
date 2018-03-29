@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    class CardPayment : Payment
+    public class CardPayment : Payment
     {
         public string Flag { get; set; }
     }

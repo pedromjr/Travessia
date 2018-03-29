@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="actions">
+    <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+    <a class="btn btn-danger btn-xs" href="#" onclick="javascript: DeleteRegister()" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+</div>
+<table id="UsersTable" class="display responsive nowrap">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Documento</th>
+            <th>Data de Nascimento</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Administrador</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        LoadUsers();
+        $('#UsersTable tbody').on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            }
+            else {
+                $('#UsersTable').find('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+    });
+    
+    function DeleteRegister() {
+        var id = $("#UsersTable").find(".selected").data("id");
+
+        $.ajax({
+            url: 'http://localhost:60057/api/user/' + id,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function () {
+                alert("Usuário excluído com sucesso.");
+                LoadUsers();
+            }
+        });
+    }
+
+    function LoadUsers() {
+        $("#UsersTable").DataTable().destroy()
+        $("#UsersTable").find("tbody").html("");
+        $.ajax({
+            url: 'http://localhost:60057/api/user/all',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                for (i = 0; i < data.length; i++) {
+                    var tableLine = "<tr data-id='" + data[i].Id + "'>" +
+                        "<td>" + data[i].Id + "</td>" +
+                        "<td>" + data[i].Name + "</td>" +
+                        "<td>" + data[i].Document + "</td>" +
+                        "<td>" + ConvertDateTimeToDate(data[i].BirthDate) + "</td>" +
+                        "<td>" + data[i].Email + "</td>" +
+                        "<td>" + data[i].Telephone + "</td>" +
+                        "<td>" + (data[i].Admin ? "Sim" : "Não") + "</td>" +
+                        "</tr>";
+                    $("#UsersTable").find("tbody").append(tableLine);
+                }
+
+                $("#UsersTable").dataTable({
+                    "bJQueryUI": true,
+                    "oLanguage": {
+                        "sProcessing": "Processando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "Não foram encontrados resultados",
+                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                        "sInfoFiltered": "",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "oPaginate": {
+                            "sFirst": "Primeiro",
+                            "sPrevious": "Anterior",
+                            "sNext": "Seguinte",
+                            "sLast": "Último"
+                        }
+                    },
+                    responsive: true,
+                    columnDefs: [
+                        { responsivePriority: 10, targets: 0 },
+                        { responsivePriority: 1, targets: 1 },
+                        { responsivePriority: 2, targets: 2 },
+                        { responsivePriority: 3, targets: 3 },
+                        { responsivePriority: 4, targets: 4 },
+                        { responsivePriority: 5, targets: 5 },
+                        { responsivePriority: 6, targets: 6 },
+                    ]
+                });
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+</script>
+

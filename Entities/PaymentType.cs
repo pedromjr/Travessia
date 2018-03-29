@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    enum PaymentType
+    public enum PaymentType
     {
         CREDIT_CARD,
         DEBIT_CARD,

@@ -1,0 +1,1196 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jano.DataAccess.v3.0</name>
+    </assembly>
+    <members>
+        <member name="T:Jano.DataAccess.Audit.Internal.InternalPropertyChange">
+            <summary>
+            Detalhes de alteração da propriedade utilizando objetos fornecidos pelo Entity Framework.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalPropertyChange.#ctor(System.String)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="propertyName">Nome da propriedade.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalPropertyChange.FirstOrDefaultPropertyChange(Jano.DataAccess.Audit.Internal.InternalEntityChange)">
+            <summary>
+            Obtém o objeto com informações da propriedade se existir, caso contrário utiliza a prórpria instância para retorno.
+            </summary>
+            <param name="entityChange">Entidade alterada.</param>
+            <returns>
+            Caso encontre um objeto <see cref="T:Jano.DataAccess.Audit.Internal.InternalPropertyChange"/> na lista de propriedades do objeto 
+            <see cref="T:Jano.DataAccess.Audit.Internal.InternalEntityChange"/> o retorna, caso contrário retorna a própria instância primeiramente 
+            adicionado à lista de propriedades de <see cref="T:Jano.DataAccess.Audit.Internal.InternalEntityChange"/>.
+            </returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.PropertyName">
+            <summary>
+            Nome da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.DisplayName">
+            <summary>
+            Nome amigável da propriedade, utilizando o atributo <see cref="T:System.ComponentModel.DisplayNameAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.OriginalValue">
+            <summary>
+            Valor original da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.NewValue">
+            <summary>
+            Novo valor da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.PropertyType">
+            <summary>
+            Tipo da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.IsNavigationProperty">
+            <summary>
+            Determina se a propriedade é de navegação, ou seja, ou relacionamento.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalPropertyChange.RelatioshipsChanged">
+            <summary>
+            Lista de relacionamentos alterados/adicionados/excluídos.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.EntityChange">
+            <summary>
+            Representa uma entidade alterada e persistida na base de dados.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.EntityChange.Create(System.Collections.Generic.IEnumerable{Jano.DataAccess.Audit.Internal.InternalEntityChange})">
+            <summary>
+            Cria uma lista de informações de entidades para relacionar ao conjunto de alterações.
+            </summary>
+            <param name="internalEntitiesChanged">Entidades alteradas utilizando objetos fornecidos pelo Entity Framework.</param>
+            <returns>Lista de entidades alteradas.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityChange.Id">
+            <summary>
+            Identificador do registro na base de dados.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityChange.TypeName">
+            <summary>
+            Tipo da entidade com namespace.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityChange.State">
+            <summary>
+            Estado da entidade, podendo ser adicionado, alterado ou excluído.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityChange.EntitiesKeyValues">
+            <summary>
+            Lista de chaves primárias da entidade relacionada.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityChange.PropertiesChanged">
+            <summary>
+            Lista de propriedades alteradas.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityChange.ChangeSet">
+            <summary>
+            Conjunto de alterações que a entidade está relacionada.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Filter.AuditAttribute">
+            <summary>
+            Determina que a classe será auditada pelo Jano.DataAccess.Audit.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Filter.IFilterAttribute">
+            <summary>
+            Filtro para determinar se o atributo utilizado deve auditar ou não o item em que está sendo utilizado.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Filter.IFilterAttribute.ShouldAudit">
+            <summary>
+            Identifica se o item em questão deve ser auditado ou não 
+            antes que os valores sejam persistidos na base de dados.
+            </summary>
+            <returns>Verdadeiro se o item deve ser auditado, falso caso contrário.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Filter.AuditAttribute.ShouldAudit">
+            <summary>
+            Retorna se a classe deve ser auditada, considerando que objetivo do 
+            atributo é auditar a classe, este método sempre retornará verdadeiro.
+            </summary>
+            <returns>Verdadeiro, pois neste caso a classe será auditada.</returns>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Internal.InternalEntityChange">
+            <summary>
+            Detalhes do registro de alteração da entidade utilizando objetos disponibilizados pelo Entity Framework.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalEntityChange.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalEntityChange.#ctor(System.Data.Objects.ObjectStateEntry,System.Type,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Este construtor deve ser utilizado somente quando houver uma alteração em propriedade que não é um relacionamento,
+            caso contrário o objeto entry.Entity estará null e ocorrerá exceção.
+            </summary>
+            <param name="entry">ObjectStateEntry contendo entidade alterada.</param>
+            <param name="entityType">Tipo da entidade.</param>
+            <param name="entityKeyValue">Chaves da entidade.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalEntityChange.#ctor(System.Data.EntityState,System.Data.EntityKey,System.Object,System.Type,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="state">EntityState da entidade.</param>
+            <param name="entityKey">EntityKey da entidade.</param>
+            <param name="entity">Entidade.</param>
+            <param name="entityType">Tipo da entidade.</param>
+            <param name="entityKeyValue">Chaves da entidade.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalEntityChange.FirstOrDefaultEntityChange(Jano.DataAccess.Audit.Internal.InternalChangeSet)">
+            <summary>
+            Obtém as informações da entidade se esta estiver na lista de 
+            <see cref="T:Jano.DataAccess.Audit.Internal.InternalEntityChange"/> do conjunto de alterações. 
+            Caso contrário utiliza a própria instância para retorno.
+            </summary>
+            <param name="changeSet">ChangeSet para consultar o conjunto de entidades existentes.</param>
+            <returns>
+            Se encontrar a entidade na lista de <see cref="T:Jano.DataAccess.Audit.Internal.InternalEntityChange"/> 
+            do conjunto de alterações a retorna, caso contrário retorna a instância desta classe adicionando primeiramente 
+            à lista de entidades alteradas do conjunto de alterações.
+            </returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalEntityChange.GetEntityChangeState(System.Data.EntityState)">
+            <summary>
+            Obtém o estado da entidade de acordo com EntityState, estado do Entity Framework.
+            </summary>
+            <param name="entityState">Estado da entidade disponibilizado pelo Entity Framework.</param>
+            <returns>Estado correspondente ao estado do Entity Framework.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.Entity">
+            <summary>
+            Entidade adicionada, alterada ou excluída.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.EntityKey">
+            <summary>
+            Refência de EntityKey utilizada pelo EntityFramework.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.State">
+            <summary>
+            Estado da entidade, podendo ser adicionada, alterada ou excluída.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.PropertiesChanged">
+            <summary>
+            Lista de propriedades alteradas.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.EntityType">
+            <summary>
+            Tipo da entidade alterada.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.EntityKeyValue">
+            <summary>
+            Chaves da entidade. Esta propriedade deve ser utilizada quando o objeto 
+            <see cref="P:Jano.DataAccess.Audit.Internal.InternalEntityChange.EntityKey"/> estiver null.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.JanoDbContext">
+            <summary>
+            Representa uma combinação dos padrões Unit-Of-Work e Repository. Permite consultas e agrupa mudanças 
+            que serão persistidas atomicamente na base de dados.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor">
+            <summary>
+            Cria uma nova instância do contexto usando conveções para definir o nome da base de dados
+            a ser utilizada. Por convenção, o nome da base de dados é o nome completo (namespace + nome)
+            da classe derivada.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.Data.Entity.Infrastructure.DbCompiledModel)">
+            <summary>
+            Cria uma nova instância do contexto usando conveções para definir o nome da base de dados
+            a ser utilizada, e o inicializa com o modelo fornecido. Por convenção, o nome 
+            da base de dados é o nome completo (namespace + nome) da classe derivada.
+            </summary>
+            <param name="model">O modelo a ser utilizado com o contexto.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.String)">
+            <summary>
+            Cria uma nova instância do contexto usando o nome ou a string de conexão fornecida.
+            </summary>
+            <param name="nameOrConnectionString">
+            Nome da base de dados, nome da string de conexão no arquivo de configuração da aplicação, ou 
+            a própria string de conexão a ser utilizada para acessar a base de dados.
+            </param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.String,System.Boolean)">
+            <summary>
+            Cria uma nova instância do contexto usando o nome ou a string de conexão fornecida
+            e dá a possibilidade de habilitar o trace dos comandos SQL executados. Atenção: por
+            questão de desempenho, não recomenda-se habilitar o trace em ambiente de produção.
+            </summary>
+            <param name="nameOrConnectionString">
+            Nome da base de dados, nome da string de conexão no arquivo de configuração da aplicação, ou 
+            a própria string de conexão a ser utilizada para acessar a base de dados.
+            </param>
+            <param name="enableTrace">True para habilitar o trace dos comandos SQL. False para desabilitar.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.Data.Common.DbConnection,System.Boolean)">
+            <summary>
+            Cria uma nova instância do contexto usando uma conexão existente com a base de dados.
+            </summary>
+            <param name="existingConnection">A conexão existente a ser utilizada.</param>
+            <param name="contextOwnsConnection">
+            Quando true, será feito o Dispose da conexão quando for feito o Dispose do contexto. 
+            Em caso contrário, o chamador deve fazer o Dispose da conexão.
+            </param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.Data.Objects.ObjectContext,System.Boolean)">
+            <summary>
+            Cria uma nova instância do contexto sobre um <see cref="T:System.Data.Objects.ObjectContext"/> existente.
+            </summary>
+            <param name="objectContext">O <see cref="T:System.Data.Objects.ObjectContext"/> existente, sobre o qual o contexto será criado.</param>
+            <param name="dbContextOwnsObjectContext">
+            Quando true, será feito o Dispose do <see cref="T:System.Data.Objects.ObjectContext"/> quando for feito o Dispose 
+            do contexto. Em caso contrário, o chamador deve fazer o Dispose da conexão.
+            </param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.String,System.Data.Entity.Infrastructure.DbCompiledModel)">
+            <summary>
+            Cria uma nova instância do contexto usando o nome ou a string de conexão fornecida, e o
+            inicializa usando o modelo fornecido.
+            </summary>
+            <param name="nameOrConnectionString">Nome da base de dados ou a connection string a ser utilizada.</param>
+            <param name="model">O modelo a ser utilizado com o contexto.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.#ctor(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.DbCompiledModel,System.Boolean)">
+            <summary>
+            Cria uma nova instância do contexto usando uma conexão existente com a base de dados, e o 
+            inicializa com o modelo fornecido.
+            </summary>
+            <param name="existingConnection">A conexão existente a ser utilizada.</param>
+            <param name="model">O modelo a ser utilizado com o contexto.</param>
+            <param name="contextOwnsConnection">
+            Quando true, será feito o Dispose da conexão quando for feito o Dispose 
+            do contexto. Em caso contrário, o chamador deve fazer o Dispose da conexão.
+            </param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.CreateConnection(System.String,System.Boolean)">
+            <summary>
+            Cria um objeto <see cref="T:System.Data.Common.DbConnection"/> utilizando a string de conexão fornecida.
+            </summary>
+            <param name="nameOrConnectionString">
+            Nome da base de dados, nome da string de conexão no arquivo de configuração da aplicação, ou 
+            a própria string de conexão a ser utilizada para acessar a base de dados.
+            </param>
+            <param name="traceEnabled">
+            True para criar um <see cref="T:System.Data.Common.DbConnection"/> decorado com a capacidade de realizar trace dos 
+            comandos SQL enviados à base de dados. False para retornar um <see cref="T:System.Data.Common.DbConnection"/> normal.
+            </param>
+            <returns>
+            Se o trace estiver habilitado, retornará um objeto <see cref="T:System.Data.Common.DbConnection"/> que adiciona 
+            a capacidade de realizar trace dos comandos SQL (decorator pattern). Em caso contrário,
+            retornará um objeto <see cref="T:System.Data.Common.DbConnection"/> normal.
+            </returns>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.GetProviderAndConnectionString(System.String,System.String@,System.String@)">
+            <summary>
+            Obtêm, a partir de uma string de conexão ou do nome de uma string de conexão presente no arquivo de configuração
+            da aplicação, o nome do provedor de dados (data provider) e a própria string de conexão com a base. Se um provedor
+            de dados não for encontrado, será retornado o provedor <see cref="N:System.Data.SqlClient"/> e a strig de conexão original.
+            </summary>
+            <param name="nameOrConnectionString">
+            Nome nome da string de conexão no arquivo de configuração da aplicação ou 
+            a própria string de conexão a ser utilizada para acessar a base de dados.
+            </param>
+            <param name="providerName">Nome do provedor de dados associado com a string de conexão recebida.</param>
+            <param name="connectionString">String de conexão associada ao nome recebido.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.IsFullEFConnectionString(System.String)">
+            <summary>
+            Verifica se a string de conexão recebida como argumento é uma "Entity Connection String" válida.
+            </summary>
+            <param name="nameOrConnectionString">String de conexão a ser verificada.</param>
+            <returns>True se for uma "Entity Connection String" válida. False em caso contrário.</returns>
+            <remarks>
+            O Entity Framework introduziu um novo tipo de connection string, chamado de "Entity Connection String".
+            Estas strings de conexão diferem das tradicionais pois possuem informações sobre as classes do modelo
+            e o mapeamento delas com o banco de dados, além da string de conexão do data provider utilizado para 
+            acessar a base (ex: System.Data.SqlClient).
+            </remarks>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.RegisterTraceHandlers">
+            <summary>
+            Registra os handlers que vão receber as notificações do mecanismo de trace dos comandos SQL enviados à base.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.CommandExecuting(EFTracingProvider.CommandExecutionEventArgs)">
+            <summary>
+            Handler invocado antes da execução de um comando na base de dados.
+            </summary>
+            <param name="e">Objeto contendo informações a respeito do comando que vai ser executado na base de dados.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.CommandFinished(EFTracingProvider.CommandExecutionEventArgs)">
+            <summary>
+            Handler invocado após a execução bem sucedida de um comando na base de dados.
+            </summary>
+            <param name="e">Objeto contendo informações a respeito do comando executado.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.CommandFailed(EFTracingProvider.CommandExecutionEventArgs)">
+            <summary>
+            Handler invocado após a execução mal sucedida de um comando na base de dados.
+            </summary>
+            <param name="e">Objeto contendo informações a respeito do comando executado.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.SaveChanges">
+            <summary>
+            Persiste todas as mudanças feitas no contexto na base de dados.
+            </summary>
+            <returns>O número de objetos escritos na base de dados.</returns>
+            <remarks>
+            Este método salva todas as alterações realizadas no contexto e realiza a auditoria do mesmo. 
+            Porém não será identificado o usuário que realizou estas alterações. 
+            Para isto utilizar o método SaveChanges(string userLogin).
+            </remarks>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.SaveChanges(System.String)">
+            <summary>
+            Persiste todas as mudanças feitas no contexto na base de dados.
+            </summary>
+            <param name="author">Login do usuário que solicitou as alterações.</param>
+            <returns>O número de objetos escritos na base de dados.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Este método é invocado quando o modelo para o contexto derivado foi inicializado, 
+            mas antes que o modelo seja bloqueado e utilizado para inicializar o contexto.
+            </summary>
+            <param name="modelBuilder">O construtor que define o modelo para o contexto que está sendo construído.</param>
+        </member>
+        <member name="M:Jano.DataAccess.JanoDbContext.OnSavingContext(Jano.DataAccess.Audit.ChangeSet)">
+            <summary>
+            Método utilizado para invocar os métodos registrados no evento SavingContext.
+            </summary>
+            <param name="e">Conjunto de alterações enviadas aos métodos registrados no evento.</param>
+        </member>
+        <member name="E:Jano.DataAccess.JanoDbContext.SavingContext">
+            <summary>
+            Dispara toda vez que o método SaveChanges() for executado com sucesso.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Internal.InternalRelationshipChangeState">
+            <summary>
+            Estado do relacionamento.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.InternalRelationshipChangeState.Added">
+            <summary>
+            Adicionado.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.InternalRelationshipChangeState.Deleted">
+            <summary>
+            Excluído.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Filter.AuditFilter">
+            <summary>
+            Representa consultas nos filtros utilizados para controle de auditoria do contexto.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Filter.AuditFilter.ShouldAuditEntity(System.Type)">
+            <summary>
+            Identifica se a entidade possui um atributo que implemente <see cref="T:Jano.DataAccess.Audit.Filter.IFilterAttribute"/> 
+            para determinar se a mesma deve ter suas propriedades auditadas antes da persistência na base de dados.
+            </summary>
+            <param name="type">Tipo da entidade.</param>
+            <returns>Verdadeiro se a entidade deve ser auditada, falso caso contrário.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Filter.AuditFilter.ShouldAuditProperty(System.Type,System.String)">
+            <summary>
+            Identifica se a propriedade possui um atributo que implemente <see cref="T:Jano.DataAccess.Audit.Filter.IFilterAttribute"/> 
+            para determinar se a mesma deve ser auditada antes da persistência na base de dados.
+            </summary>
+            <param name="type">Tipo da entidade.</param>
+            <param name="propertyName">Nome da propriedade.</param>
+            <returns>Verdadeiro se a propriedade deve ser auditada, falso caso contrário.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Filter.AuditFilter.ShouldAuditProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Identifica se a propriedade possui um atributo que implemente <see cref="T:Jano.DataAccess.Audit.Filter.IFilterAttribute"/> 
+            para determinar se a mesma deve ser auditada antes da persistência na base de dados.
+            </summary>
+            <param name="propertyInfo">PropertyInfo da propriedade.</param>
+            <returns>Verdadeiro se a propriedade deve ser auditada, falso caso contrário.</returns>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Internal.InternalChangeSet">
+            <summary>
+            Representa um conjunto de alterações utilizando objetos fornecidos pelo Entity Framework.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalChangeSet.#ctor(System.String)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="author">Autor do conjunto de alterações.</param>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalChangeSet.Author">
+            <summary>
+            Usuário que está realizando o conjunto de alterações.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalChangeSet.Date">
+            <summary>
+            Data/hora em que as alterações foram realizadas.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalChangeSet.EntitiesChanged">
+            <summary>
+            Lista de entidades alteradas.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalChangeSet.ObjectStateEntryScalar">
+            <summary>
+            Lista de entidades com propriedades alteradas.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalChangeSet.ObjectStateEntryRelationship">
+            <summary>
+            Lista de entidades com relacionamentos alterados.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.RelationshipChange">
+            <summary>
+            Representa uma alteração de relacionamento de uma entidade.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.RelationshipChange.Create(System.Collections.Generic.IEnumerable{Jano.DataAccess.Audit.Internal.InternalRelationshipChange})">
+            <summary>
+            Cria uma lista de informações de relacionamentos alterados utilizando objetos fornecidos pelo Entity Framework.
+            </summary>
+            <param name="internalRelationshipsChanged">Dados do relacionamento alterado de acordo com objetos fornecidos pelo Entity Framework.</param>
+            <returns>Lista de informações dos relacionamentos alterados.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.RelationshipChange.Id">
+            <summary>
+            Identificador do registro na base de dados.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.RelationshipChange.State">
+            <summary>
+            Estado do relacionamento, podendo ser adicionado ou excluído.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.RelationshipChange.TypeName">
+            <summary>
+            Nome da entidade, com namespace, relacionada.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.RelationshipChange.PropertyChange">
+            <summary>
+            Propriedade que o relacionamento está associado.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.RelationshipChange.EntitiesKeyValues">
+            <summary>
+            Lista de chaves e valores da entidade relacionada.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Mapping.ChangeSetMap">
+            <summary>
+            Define o mapeamento dos campos na base de dados para as propriedades da entidade relacionada.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Mapping.ChangeSetMap.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Helpers.AttributeHelpers">
+            <summary>
+            Helper para recuperar os atributos utilizados em uma classe ou propriedade.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Helpers.AttributeHelpers.GetAttributes``1(System.Type)">
+            <summary>
+            Recupera os atributos de um determinado tipo.
+            </summary>
+            <typeparam name="T">Atributo que será procurado e utilizado para conversão de acordo com o tipo da entidade.</typeparam>
+            <param name="type">Tipo da entidade.</param>
+            <returns>Lista contendo os atributos encontrados na entidade em questão.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Helpers.AttributeHelpers.GetAttribute``1(System.Type,System.String)">
+            <summary>
+            Recupera o primeiro atributo de um determinado tipo ou null se nenhum atributo for encontrado.
+            </summary>
+            <typeparam name="T">Atributo que será procurado e utilizado para conversão de acordo com o tipo da entidade.</typeparam>
+            <param name="type">Tipo da entidade.</param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Helpers.AttributeHelpers.GetAttributes``1(System.Reflection.PropertyInfo)">
+            <summary>
+            Recupera os atributos de um determinado tipo.
+            </summary>
+            <typeparam name="T">Atributo que será procurado e utilizado para conversão de acordo com PropertyInfo da propriedade.</typeparam>
+            <param name="propertyInfo">PropertyInfo da propriedade para realizar a consulta.</param>
+            <returns>Lista contendo os atributos encontrados na propriedade em questão.</returns>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Internal.InternalEntityChangeState">
+            <summary>
+            Estado da entidade.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.InternalEntityChangeState.Added">
+            <summary>
+            Adicionado
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.InternalEntityChangeState.Deleted">
+            <summary>
+            Excluído
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.InternalEntityChangeState.Modified">
+            <summary>
+            Modificado
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.PropertyChange">
+            <summary>
+            Representa uma propriedade alterada e persistida na base de dados.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.PropertyChange.Create(System.Collections.Generic.IEnumerable{Jano.DataAccess.Audit.Internal.InternalPropertyChange})">
+            <summary>
+            Cria uma lista de informações das propriedades para relacionar à entidade alterada.
+            </summary>
+            <param name="internalPropertiesChanged">Dados da propriedade alterada de acordo com objetos fornecidos pelo Entity Framework.</param>
+            <returns>Lista de informações das propriedades altedadas.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.Id">
+            <summary>
+            Identificador do registro na base de dados.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.PropertyName">
+            <summary>
+            Nome da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.DisplayName">
+            <summary>
+            Nome amigável da propriedade, utilizando o atributo <see cref="T:System.ComponentModel.DisplayNameAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.NewValue">
+            <summary>
+            Novo valor da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.OriginalValue">
+            <summary>
+            Valor original da propriedade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.IsNavigationProperty">
+            <summary>
+            Determina se a propriedade é de navegação, ou seja, ou relacionamento.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.EntityChange">
+            <summary>
+            Entidade à qual esta propriedade pertence.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.PropertyChange.RelationshipsChanged">
+            <summary>
+            Lista de relacionamentos alterados caso esta propriedade seja de navegação.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Filter.DoNotAuditAttribute">
+            <summary>
+            Determina que a propriedade não deve ser auditada com o Jano.DataAccess.Audit.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Filter.DoNotAuditAttribute.ShouldAudit">
+            <summary>
+            Retorna se a propriedade deve ser auditada, considerando que objetivo do 
+            atributo é NÃO auditar a propriedade, este método sempre retornará falso.
+            </summary>
+            <returns>Falso, pois neste caso a propriedade não será auditada.</returns>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.AuditManager`1._context">
+            <summary>
+            Contexto da aplicação.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.AuditManager`1._changeSet">
+            <summary>
+            Conjunto de alterações.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.AuditManager`1._dataModelItems">
+            <summary>
+            Itens do modelo de dados utilizado.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.#ctor(`0,System.String)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="context">Contexto da aplicação.</param>
+            <param name="author">Autor do conjunto de alterações.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.DoAudit">
+            <summary>
+            Inicia o processo de auditoria de objetos.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.AuditScalar(System.Collections.Generic.IEnumerable{System.Data.Objects.ObjectStateEntry})">
+            <summary>
+            Audita as entidades contendo somente alterações em propriedades escalares.
+            </summary>
+            <param name="entries">Entradas contendo entidades alteradas.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.AuditRelationship(System.Collections.Generic.IEnumerable{System.Data.Objects.ObjectStateEntry})">
+            <summary>
+            Audita as entidades contendo somente alterações em relacionamentos.
+            </summary>
+            <param name="entries">Entradas contendo entidades alteradas.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.AuditScalarProperties(Jano.DataAccess.Audit.Internal.InternalEntityChange,System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Audita as propriedades escalares.
+            </summary>
+            <param name="entityChange">Entidade que a propriedade pertence.</param>
+            <param name="entry">Informações do objeto, relacionamentos e chaves da alteração.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.AuditRelationshipProperties(Jano.DataAccess.Audit.Internal.InternalEntityChange,System.Data.Objects.ObjectStateEntry,System.Data.EntityKey)">
+            <summary>
+            Audita as propriedades de relacionamento.
+            </summary>
+            <param name="entityChange">Entidade que a propriedade pertence.</param>
+            <param name="entry">Informações do objeto, relacionamentos e chaves da alteração.</param>
+            <param name="sourceKey">Entidade chave da alteração.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetTypeByProperty(System.Data.Metadata.Edm.NavigationProperty)">
+            <summary>
+            Recupera o tipo da entidade de uma determinada propriedade.
+            </summary>
+            <param name="property">Propriedade para identificar o tipo da entidade.</param>
+            <returns>Tipo da entidade.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetRealEntityType(System.Type)">
+            <summary>
+            Método responsável por recuperar o tipo da entidade que está sendo utilizada na entrada.
+            Isto é necessário quando o Entity Framework utiliza dynamic proxies.
+            </summary>
+            <param name="type">Tipo da entidade na entrada.</param>
+            <returns>Tipo da entidade utilizada na aplicação.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetKeyMemberAndValues(System.Object)">
+            <summary>
+            Identifica as chaves e seus valores de uma determinada entidade.
+            </summary>
+            <param name="entity">Entidade para identificar as chaves e seus valores.</param>
+            <returns>Lista contendo chaves e seus valores da entidade.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetProperty(System.Data.Objects.ObjectStateEntry,System.Data.Metadata.Edm.AssociationEndMember,System.Data.Metadata.Edm.AssociationEndMember,System.Data.EntityKey)">
+            <summary>
+            Gets the NavigationProperty that allows you to navigate from entity represented
+            by the localEnd to the entity represented by the foreignEnd.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetSourceEntityKey(System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Identifica a primeira ponta do relacionamento.
+            </summary>
+            <param name="entry">Informações da entidade e seus relacionamentos, controlados pelo Entity Framework.</param>
+            <returns>Informações da entidade.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetTargetEntityKey(System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Identifica a ponta final do relacionamento.
+            </summary>
+            <param name="entry">Informações da entidade e seus relacionamentos, controlados pelo Entity Framework.</param>
+            <returns>Informações da entidade.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetAssociationEnds(System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Recupera as duas pontas do relacionamento.
+            </summary>
+            <param name="entry">Informações da entidade e seus relacionamentos, controlados pelo Entity Framework.</param>
+            <returns>Array contendo as duas pontas do relacionamento.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetAssociationEndMember(System.Data.Metadata.Edm.AssociationEndMember[])">
+            <summary>
+            Recupera uma das pontas do relacionamento.
+            </summary>
+            <param name="associationEnds">Relacionamentos.</param>
+            <returns>Uma ponta do relacionamento.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetValuePair(System.Data.Objects.ObjectStateEntry,System.String)">
+            <summary>
+            Cria um objeto contendo o valor origina, o novo valor e o estado da entrada.
+            </summary>
+            <param name="entry">Informações da entidade e seus relacionamentos, controlados pelo Entity Framework.</param>
+            <param name="property">Nome da propriedade.</param>
+            <returns>Objeto contendo informações dos valores e estado da propriedade.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.GetChangedProperties(System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Recupera todas as propriedades da entidade alterada/criada/deletada.
+            </summary>
+            <param name="entry">Informações da entidade controlada pelo Entity Framework.</param>
+            <returns>Lista de propriedades da entidade.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditManager`1.UsableValues(System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Recupera os valores (CurrentValues or OriginaValues) de acordo com o EntityState.
+            Exemplo: Se o estado for Deleted não existe CurrentValues, então será retornado OriginalValues.
+            Se o estado for diferente de Deleted, então existirá CurrentValues e este será retornado.
+            </summary>
+            <param name="entry">Informações da entidade controlada pelo Entity Framework.</param>
+            <returns>Valor atual ou valor antigo das propriedades da entidade de acordo com o estado da mesma.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.AuditManager`1.ChangeSet">
+            <summary>
+            Conjunto de alterações.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Configuration.DataAccessConfig">
+            <summary>
+            Classe utilizada para configurar o mecanismo de acesso a dados na aplicação.
+            Utilize as propriedades da classe no .config da aplicação para condicionar o funcionamento do mecanismo.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Configuration.DataAccessConfig._Lock">
+            <summary>
+            Lock.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Configuration.DataAccessConfig._Instance">
+            <summary>
+            Instância de <see cref="P:Jano.DataAccess.Configuration.DataAccessConfig.Instance"/>.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Configuration.DataAccessConfig.Instance">
+            <summary>
+            Retorna a instância de <see cref="P:Jano.DataAccess.Configuration.DataAccessConfig.Instance"/>.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Internal.ValuePair">
+            <summary>
+            Obtém os valores, original e novo, para comparar se houve alteração para registrar pelo auditor.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.ValuePair.OriginalValue">
+            <summary>
+            Valor original da propriedade.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.ValuePair.NewValue">
+            <summary>
+            Novo valor da propriedade.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.Internal.ValuePair.state">
+            <summary>
+            Estado da propriedade, registrado pelo Entity Framework.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.ValuePair.#ctor(System.Object,System.Object,System.Data.EntityState)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="originalValue">Valor original da propriedade.</param>
+            <param name="newValue">Novo valor da propriedade.</param>
+            <param name="state">Estadp da propriedade.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.ValuePair.Get(System.Object)">
+            <summary>
+            Obtém o valor se não for System.DbNull, caso contrário retorna null.
+            </summary>
+            <param name="value">Valor para comparação com System.DbNull.</param>
+            <returns>O próprio valor se não for System.DbNull, caso contrário retorna null.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.ValuePair.HasChanged">
+            <summary>
+            Propriedade utilizada para verificação dos valores, original e novo, de acordo com estado da propriedade.
+            Se o estado for Added ou Deleted, retorna verdadeiro.
+            Se o estado for qualquer outro, retorna verdadeiro se o valor original for diferente do novo valor.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Mapping.EntityChangeMap">
+            <summary>
+            Define o mapeamento dos campos na base de dados para as propriedades da entidade relacionada.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Mapping.EntityChangeMap.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.AdoNet.DatabaseConnection">
+            <summary>
+            Estabelece a conexão com um banco de dados SQL Server e executa operações de leitura e gravação nele.
+            Uma instância desta classe sempre deve ser criada através do comando <b>using</b> para garantir que 
+            o método <b>Dispose</b> seja executado para liberação dos recursos.
+            </summary>
+            <code>
+            using (var db = new DatabaseConnection(Database.Client, 2))
+            {
+                var command = new SqlCommand("SELECT campo FROM tabela WHERE variavel = @Variavel");
+                command.Parameters.Add(new SqlParameter("Variavel", variavel));
+                
+                var reader = db.ExecuteReader(command);
+                if (reader.Read())
+                {
+                    var abc = reader["campo"].ToString();
+                }
+            } // No fechamento deste bloco serão liberados automaticamente os objetos SqlConnection, SqlCommand e SqlDataReader.
+            </code>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.#ctor(System.String)">
+            <summary>
+            Cria uma conexão com o banco de dados passado como parâmetro.
+            </summary>
+            <param name="connectionString">String de conexão para o banco de dados que se deseja utilizar.</param>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.Close">
+            <summary>
+            Fecha a conexão com o banco de dados.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteReader(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Executa um select no banco de dados.
+            </summary>
+            <param name="sqlCommand">Comando Select que se quer executar.</param>
+            <returns>Um SqlDataReader contendo os dados lidos no BD.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteReader(System.Data.SqlClient.SqlCommand,System.Int32)">
+            <summary>
+            Executa uma consulta retornando o reader associado.
+            </summary>
+            <param name="sqlCommand">Comando a ser executado.</param>
+            <param name="commandTimeout">Timeout para execução do comando.</param>
+            <returns>Datareader associado a consulta.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteScalar(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            ExecuteScalar.
+            </summary>
+            <param name="sqlCommand">Comando Select que se quer executar.</param>
+            <returns>Número de registros afetados pela Consulta.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteScalar(System.Data.SqlClient.SqlCommand,System.Int32)">
+            <summary>
+            Executa uma consulta que retorna apenas um valor.
+            </summary>
+            <param name="sqlCommand">Comando que se quer executar.</param>
+            <param name="commandTimeout">Timeout para execução do comando.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteNonQuery(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            ExecuteNonQuery.
+            </summary>
+            <param name="sqlCommand">Comando Select que se quer executar.</param>
+            <returns>Número de registros afetados pela Consulta.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteNonQuery(System.Data.SqlClient.SqlCommand,System.Int32)">
+            <summary>
+            Executa uma consulta que retorna apenas um valor.
+            </summary>
+            <param name="sqlCommand">Comando que se quer executar</param>
+            <param name="commandTimeout">Timeout para execução do comando.</param>
+            <returns>Número de registros afetados pela Consulta.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteAdapter(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Executa um select no banco de dados.
+            </summary>
+            <param name="sqlCommand">Comando Select que se quer executar.</param>
+            <returns>Um SqlDataAdapter contendo os dados lidos no BD.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.ExecuteAdapter(System.Data.SqlClient.SqlCommand,System.Int32)">
+            <summary>
+            Executa um select no banco de dados retornando um SqlDataAdapter com o retorno da consulta.
+            </summary>
+            <param name="sqlCommand">Comando Select que se quer executar.</param>
+            <param name="commandTimeout">Timeout para execução do comando.</param>
+            <returns>Um SqlDataAdapter contendo os dados lidos no BD.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.BeginTransaction">
+            <summary>
+            Inicia uma transação.
+            </summary>
+            <returns>Transação iniciada.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.Dispose(System.Boolean)">
+            <summary>
+            Fecha as conexões e destrói os objetos utilizados para acessar o banco de dados.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.DatabaseConnection.Dispose">
+            <summary>
+            Fecha as conexões e destrói os objetos utilizados para acessar o banco de dados.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.SavingContextHandler">
+            <summary>
+            Delegate utilizado para referenciar os eventos de persistência das entidades na base de dados.
+            </summary>
+            <param name="changeset"><see cref="T:Jano.DataAccess.Audit.ChangeSet"/> do evento.</param>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.ChangeSet">
+            <summary>
+            Representa um conjunto de alterações em entidades persistidas na base de dados da aplicação.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.ChangeSet.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.ChangeSet.#ctor(Jano.DataAccess.Audit.Internal.InternalChangeSet)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="internalChangeSet">Conjunto de alterações utilizando objetos fornecidos pelo Entity Framework.</param>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.ChangeSet.Id">
+            <summary>
+            Identificador do registro na base de dados.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.ChangeSet.Author">
+            <summary>
+            Usuário que realizou o conjunto de alterações.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.ChangeSet.Date">
+            <summary>
+            Data/hora em que as alterações foram realizadas.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.ChangeSet.EntitiesChanged">
+            <summary>
+            Lista de entidades alteradas.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Mapping.PropertyChangeMap">
+            <summary>
+            Define o mapeamento dos campos na base de dados para as propriedades da entidade relacionada.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Mapping.PropertyChangeMap.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Mapping.EntityKeyValueMap">
+            <summary>
+            Define o mapeamento dos campos na base de dados para as propriedades da entidade relacionada.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Mapping.EntityKeyValueMap.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.EntityKeyValue">
+            <summary>
+            Representa uma chave da entidade e seu valor.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.EntityKeyValue.Create(System.Data.EntityKeyMember[])">
+            <summary>
+            Cria uma lista de chave da entidade e valor da chave com base do objeto fornecido pelo Entity Framework.
+            </summary>
+            <param name="entityKeyMember">Array contendo as chaves e valores de acordo com Entity Framework.</param>
+            <returns>Lista contendo as chaves da entidade e valores das chaves.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.EntityKeyValue.Create(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            /// Cria uma lista de chave da entidade e valor da chave com base nos valores recuperados da entidade em tempo de execução.
+            </summary>
+            <param name="keyMembers">Lista contendo as chaves e valores recuperados em tempo de execução.</param>
+            <returns>Lista contendo as chaves da entidade e valores das chaves.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityKeyValue.Id">
+            <summary>
+            Identificador do registro na base de dados.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityKeyValue.KeyName">
+            <summary>
+            Nome da chave da entidade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityKeyValue.KeyValue">
+            <summary>
+            Valor da chave da entidade.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityKeyValue.EntityChange">
+            <summary>
+            Entidade relacionada à esta chave.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.EntityKeyValue.RelatioshipChange">
+            <summary>
+            Alteração de relacionamento relacionado à esta chave.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Internal.InternalRelationshipChange">
+            <summary>
+            Detalhes de alteração de relacionamentos, utilizando objetos fornecidos pelo Entity Framework.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.#ctor(System.Data.EntityKey,System.Data.EntityState,System.Object)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="entityKey">Chaves primárias da entidade.</param>
+            <param name="state">Estado do relacionamento.</param>
+            <param name="entity">Entidade.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.#ctor(System.Data.EntityKey,System.Data.EntityState,System.Object,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="entityKey">Chaves primárias da entidade.</param>
+            <param name="state">Estado do relacionamento.</param>
+            <param name="entity">Entidade.</param>
+            <param name="keyMembers">Chaves primárias da entidade caso <see cref="T:System.Data.EntityKeyMember"/> esteja null.</param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.GetRelationshipChangeState(System.Data.EntityState)">
+            <summary>
+            Obtém o estado do relacionamento, podendo ser Adicionado ou Excluído.
+            </summary>
+            <param name="state">Estado do relacionamento registrado pelo Entity Framework.</param>
+            <returns>Estado correspondente ao estado do Entity Framewrok.</returns>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.RelatedEntityKey">
+            <summary>
+            Refência de EntityKey utilizada pelo EntityFramework.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.Entity">
+            <summary>
+            Entidade adicionada ou excluída.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.State">
+            <summary>
+            Estado do relacionamento, pondendo ser adicionado ou excluído.
+            </summary>
+        </member>
+        <member name="P:Jano.DataAccess.Audit.Internal.InternalRelationshipChange.KeyMembers">
+            <summary>
+            Lista contendo nome das chaves primárias e seus valores.
+            Este objeto é utilizado somente se EntityKey estiver null.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.Mapping.RelationshipChangeMap">
+            <summary>
+            Define o mapeamento dos campos na base de dados para as propriedades da entidade relacionada.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.Mapping.RelationshipChangeMap.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="T:Jano.DataAccess.Audit.AuditHistory">
+            <summary>
+            Representa o histórico de alterações registradas pelo auditor de contexto na base de dados.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.AuditHistory._context">
+            <summary>
+            Contexto utilizado na aplicação e herdado de JanoDbContext.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.AuditHistory._dbSetChangeSet">
+            <summary>
+            DbSet de ChangeSet para consultas.
+            </summary>
+        </member>
+        <member name="F:Jano.DataAccess.Audit.AuditHistory._dbSetEntityChange">
+            <summary>
+            DbSet de EntityChange para consultas.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditHistory.#ctor(Jano.DataAccess.JanoDbContext)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditHistory.GetChangeSet(System.Int32)">
+            <summary>
+            Consulta um ChangeSet na base de dados pelo seu identificador.
+            </summary>
+            <param name="changeSetid">Identificador do ChangeSet na base de dados.</param>
+            <returns>ChangeSet encontrado de acordo com identificador informado.</returns>
+            <exception cref="T:Jano.JanoException"></exception>
+        </member>
+        <member name="M:Jano.DataAccess.Audit.AuditHistory.GetByEntityFullName(System.String)">
+            <summary>
+            Consulta registros na base de dados de acordo com nome da entidade.
+            </summary>
+            <param name="fullName">Nome com namespace da entidade para consulta.</param>
+            <returns>Lista de entidades encontradas na base de dados.</returns>
+            <exception cref="T:Jano.JanoException"></exception>
+        </member>
+        <member name="T:Jano.DataAccess.AdoNet.SqlDataReaderExtention">
+            <summary>
+            Extentions Methods para a classe SqlDataReader.
+            </summary>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.SqlDataReaderExtention.GetValueOrDefault``1(System.Data.IDataRecord,System.String)">
+            <summary>
+            Retorna o valor de um campo ou, caso seja nulo, o seu valor default.
+            </summary>
+            <typeparam name="T">Tipo do campo.</typeparam>
+            <param name="row">Objeto que representa a linha da tabela onde o campo está.</param>
+            <param name="fieldName">Nome do campo.</param>
+            <returns>Se o valor do campo for diferente de nulo, retorna seu valor. Em caso contrário,
+            retorna o valor default do seu tipo de dado.</returns>
+        </member>
+        <member name="M:Jano.DataAccess.AdoNet.SqlDataReaderExtention.GetValueOrDefault``1(System.Data.IDataRecord,System.Int32)">
+            <summary>
+            Retorna o valor de um campo ou, caso seja nulo, o seu valor default.
+            </summary>
+            <typeparam name="T">Tipo do campo.</typeparam>
+            <param name="row">Objeto que representa a linha da tabela onde o campo está.</param>
+            <param name="ordinal">Ordinal da coluna, começando em zero.</param>
+            <returns>Se o valor do campo for diferente de nulo, retorna seu valor. Em caso contrário,
+            retorna o valor default do seu tipo de dado.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,600 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jano.v3.0</name>
+    </assembly>
+    <members>
+        <member name="T:Jano.JanoException">
+            <summary>
+            Exceção genérica da Jano.
+            </summary>
+        </member>
+        <member name="M:Jano.JanoException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Construtor necessário para serialização.
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Jano.JanoException.#ctor(System.String)">
+            <summary>
+            JanoException.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Jano.JanoException.#ctor(System.String,System.Exception)">
+            <summary>
+            JanoException.
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:Jano.IDependencyInjectionContainer">
+            <summary>
+            Representa a interface com o Container de injeção de dependência / inversão de controle
+            </summary>
+        </member>
+        <member name="M:Jano.IDependencyInjectionContainer.RegisterType``2">
+            <summary>
+            RegisterType{TFrom, TTo}.
+            </summary>
+            <typeparam name="TFrom"></typeparam>
+            <typeparam name="TTo"></typeparam>
+        </member>
+        <member name="M:Jano.IDependencyInjectionContainer.RegisterType(System.Type,System.Type)">
+            <summary>
+            RegisterType.
+            </summary>
+            <param name="interfaceType"></param>
+            <param name="implementationType"></param>
+        </member>
+        <member name="M:Jano.IDependencyInjectionContainer.RegisterType(System.Type,Microsoft.Practices.Unity.InjectionMember[])">
+            <summary>
+            RegisterType.
+            </summary>
+            <param name="interfaceType"></param>
+            <param name="injectionMembers"></param>
+        </member>
+        <member name="M:Jano.IDependencyInjectionContainer.RegisterInstance``1(``0)">
+            <summary>
+            RegisterInstance{T}
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Jano.IDependencyInjectionContainer.Resolve(System.Type)">
+            <summary>
+            Resolve.
+            </summary>
+            <param name="typeToResolve"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jano.IDependencyInjectionContainer.Resolve``1">
+            <summary>
+            Resolve{T}.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Jano.Helper.DateTimeHelper">
+            <summary>
+            Contém métodos auxiliares para o tipo <see cref="T:System.DateTime"/>.
+            </summary>
+        </member>
+        <member name="M:Jano.Helper.DateTimeHelper.FirstDayOfMonth(System.DateTime)">
+            <summary>
+            Retorna o primeiro dia do mês da data recebida como parâmetro.
+            </summary>
+            <param name="date">A data que se deseja descobrir o primeiro dia do mês.</param>
+            <returns>Um <see cref="T:System.DateTime"/> que representa o primeiro dia do mês da data recebida como parâmetro.</returns>
+        </member>
+        <member name="M:Jano.Helper.DateTimeHelper.LastDayOfMonth(System.DateTime)">
+            <summary>
+            Retorna o último dia do mês da data recebida como parâmetro.
+            </summary>
+            <param name="date">A data que se deseja descobrir o último dia do mês.</param>
+            <returns>Um <see cref="T:System.DateTime"/> que representa o último dia do mês da data recebida como parâmetro.</returns>
+        </member>
+        <member name="M:Jano.Helper.DateTimeHelper.Yesterday(System.DateTime)">
+            <summary>
+            Retorna o dia anterior a data recebida como parâmetro.
+            </summary>
+            <param name="date">A data que se deseja descobrir o dia anterior.</param>
+            <returns>Um <see cref="T:System.DateTime"/> que representa o dia anterior a data recebida como parâmetro.</returns>
+        </member>
+        <member name="M:Jano.Helper.DateTimeHelper.Tomorrow(System.DateTime)">
+            <summary>
+            Retorna o dia posterior a data recebida como parâmetro.
+            </summary>
+            <param name="date">A data que se deseja descobrir o dia posterior.</param>
+            <returns>Um <see cref="T:System.DateTime"/> que representa o dia posterior a data recebida como parâmetro.</returns>
+        </member>
+        <member name="M:Jano.Helper.DateTimeHelper.PreviousMonth(System.DateTime)">
+            <summary>
+            Retorna o número que representa o mês anterior ao recebido como parâmetro.
+            </summary>
+            <param name="date">A data que se deseja descobrir o mês anterior.</param>
+            <returns>Um inteiro que representa o mês anterior ao recebido como parâmetro.</returns>
+        </member>
+        <member name="M:Jano.Helper.DateTimeHelper.NextMonth(System.DateTime)">
+            <summary>
+            Retorna o número que representa o mês posterior ao recebido como parâmetro.
+            </summary>
+            <param name="date">A data que se deseja descobrir o mês posterior.</param>
+            <returns>Um inteiro que representa o mês posterior ao recebido como parâmetro.</returns>
+        </member>
+        <member name="T:Jano.Occurrence.OccurrenceManager">
+            <summary>
+            Gerenciador de Ocorrências de execução de software
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceManager._ocorrenceWriter">
+            <summary>
+            Lista de Objetos que mantém e registram as ocorrências.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceManager._Instance">
+            <summary>
+            Instância única da classe por thread.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceManager.sync">
+            <summary>
+            Responsável por sincronizar a criação da classe.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceManager._disposed">
+            <summary>
+            Indica se a classe já foi liberada da memória.
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceManager.#ctor">
+            <summary>
+            Construtor da Classe
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceManager.Instance">
+            <summary>
+            Obtém a Instância da Classe.
+            </summary>
+            <returns>Instância de OcorrenceManager.</returns>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceManager.Instance(Jano.Occurrence.OccurrenceWriterBase)">
+            <summary>
+            Obtém a Instância da Classe.
+            </summary>
+            <param name="ocorrenceWriter">Writer que escreverá as ocorrências.</param>
+            <returns>Instância de OcorrenceManager.</returns>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceManager.Write(System.Object)">
+            <summary>
+            Registra uma ocorrência.
+            </summary>
+            <param name="occurrence">Ocorrência a ser registrada.</param>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceManager.Dispose(System.Boolean)">
+            <summary>
+            Libera os objetos da Memória.
+            </summary>
+            <param name="disposing">Controle utilizado pelo GC.</param>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceManager.Dispose">
+            <summary>
+            Libera os objetos da memória.
+            </summary>
+        </member>
+        <member name="T:Jano.DependencyInjectionContainer">
+            <summary>
+            Container de injeção de dependência baseado no Unity Application Block do Microsoft Application Architecture Guide, 
+            2nd Edition.
+            </summary>
+        </member>
+        <member name="F:Jano.DependencyInjectionContainer._container">
+            <summary>
+            Interface do container de injeção de dependência.
+            </summary>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.#ctor">
+            <summary>
+            Inicializa uma nova instância da classe <see cref="T:Jano.DependencyInjectionContainer"/>.
+            </summary>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.ReadConfiguration">
+            <summary>
+            <para>Lê a configuração do controle de injeção de dependência.</para>
+            <para>Na configuração do controle, são registrados e seus mapeamentos para que o controle de injeção de 
+            dependência possa resolvê-los.</para>
+            </summary>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.RegisterType``2">
+            <summary>
+            RegisterType.
+            </summary>
+            <typeparam name="TFrom"></typeparam>
+            <typeparam name="TTo"></typeparam>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.RegisterType(System.Type,System.Type)">
+            <summary>
+            RegisterType.
+            </summary>
+            <param name="interfaceType"></param>
+            <param name="implementationType"></param>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.RegisterInstance``1(``0)">
+            <summary>
+            RegisterInstance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.Resolve(System.Type)">
+            <summary>
+            Resolve.
+            </summary>
+            <param name="typeToResolve"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.Resolve(System.Type,System.String)">
+            <summary>
+            Resolve.
+            </summary>
+            <param name="typeToResolve"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.Resolve``1">
+            <summary>
+            Resolve.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Jano.DependencyInjectionContainer.Dispose">
+            <summary>
+            Dispose.
+            </summary>
+        </member>
+        <member name="T:Jano.Occurrence.OccurrenceWriter`1">
+            <summary>
+            Escritor de ocorrências no gerenciador.
+            A classe é tipada para o tipo de ocorrência definida pelo usuário na construção do tracer.
+            </summary>
+            <typeparam name="TOccurrence">Tipo das Ocorrências escritas.</typeparam>
+        </member>
+        <member name="T:Jano.Occurrence.OccurrenceWriterBase">
+            <summary>
+            Classe base para escrever ocorrências no gerenciador.
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceWriterBase.Write(System.Object)">
+            <summary>
+            Escritor base de ocorrências no gerenciador.
+            </summary>
+            <param name="item">Ocorrência a ser escrita.</param>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceWriterBase.Dispose">
+            <summary>
+            Libera os objetos da memória.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceWriter`1._entries">
+            <summary>
+            Ocorrências registradas pelo Writer.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceWriter`1._disposed">
+            <summary>
+            Booleano indicando se a classe já foi limpa.
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceWriter`1.#ctor">
+            <summary>
+            Construtor da classe.
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceWriter`1.Write(System.Object)">
+            <summary>
+            Escreve uma ocorrência.
+            </summary>
+            <param name="item">Ocorrência a ser registrada.</param>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceWriter`1.Dispose(System.Boolean)">
+            <summary>
+            Libera os objetos da Memória.
+            </summary>
+            <param name="disposing">Controle utilizado pelo GC.</param>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceWriter`1.Dispose">
+            <summary>
+            Libera os objetos da memória.
+            </summary>
+        </member>
+        <member name="P:Jano.Occurrence.OccurrenceWriter`1.Entries">
+            <summary>
+            Ocorrências registradas pelo Writer.
+            </summary>
+        </member>
+        <member name="T:Jano.Occurrence.OccurrenceTracer`1">
+            <summary>
+            Tracer de controle de Ocorrências de software.
+            </summary>
+            <typeparam name="TOccurrence">Tipo das Ocorrências registradas.</typeparam>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceTracer`1._manager">
+            <summary>
+            Gerenciador de ocorrências.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceTracer`1._writer">
+            <summary>
+            Objeto que mantém e registra as ocorrências do tracer.
+            </summary>
+        </member>
+        <member name="F:Jano.Occurrence.OccurrenceTracer`1._disposed">
+            <summary>
+            _disposed.
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceTracer`1.#ctor">
+            <summary>
+            Construtor da Classe.
+            </summary>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceTracer`1.GetOccurrences">
+            <summary>
+            Obtém as ocorrências disparadas no escopo do tracer.
+            </summary>
+            <returns>ocorrências disparadas no escopo do tracer</returns>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceTracer`1.Dispose(System.Boolean)">
+            <summary>
+            Libera os objetos da Memória.
+            </summary>
+            <param name="disposing">Controle utilizado pelo GC.</param>
+        </member>
+        <member name="M:Jano.Occurrence.OccurrenceTracer`1.Dispose">
+            <summary>
+            Libera os objetos da memória.
+            </summary>
+        </member>
+        <member name="T:Jano.Helper.DependencyInjectionHelper">
+            <summary>
+            Classe responsável por registrar e recuperar objetos em um container de injeção de dependência.
+            </summary>
+        </member>
+        <member name="F:Jano.Helper.DependencyInjectionHelper._Container">
+            <summary>
+            Instância singleton da classe.
+            </summary>
+        </member>
+        <member name="F:Jano.Helper.DependencyInjectionHelper._LockThis">
+            <summary>
+            Lock para tratamento de concorrência.
+            </summary>
+        </member>
+        <member name="M:Jano.Helper.DependencyInjectionHelper.Dispose">
+            <summary>
+            Liberar os recursos alocados pelo container de injeção de dependência.
+            </summary>
+        </member>
+        <member name="P:Jano.Helper.DependencyInjectionHelper.Container">
+            <summary>
+            Obtém o container de injeção de dependência.
+            </summary>
+        </member>
+        <member name="T:Jano.Configuration.JanoConfigurationException">
+            <summary>
+            Exceção base disparada quando ocorrem erros o mecanismo de configuração do framework Jano.
+            </summary>
+        </member>
+        <member name="M:Jano.Configuration.JanoConfigurationException.#ctor(System.String)">
+            <summary>
+            Constrói uma nova exceção genérica.
+            </summary>
+            <param name="message">Mensagem que explica a causa da exceção.</param>
+        </member>
+        <member name="M:Jano.Configuration.JanoConfigurationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constrói uma nova exceção genérica.
+            </summary>
+            <param name="message">Mensagem que explica a causa da exceção.</param>
+            <param name="innerException">Inner exception que gerou a criação da nova exceção genérica.</param>
+        </member>
+        <member name="T:Jano.ContractProgramming.Assert">
+            <summary>
+            Verifica condições na execução do programa usando proposições true/false.
+            </summary>
+            <remarks>Esta classe deve ser utilizada para verificação de pré-condições e pós-condições na execução
+            de métodos, seguindo os padrões da Programação por Contratos (Contract Proggramming ou Design by 
+            Contract). Este modelo de programação prega que cada método de uma classe oferece um serviço e deve 
+            respeitar um "contrato" de uso. O termo refere-se aos "direitos" e "deveres" existentes nos contratos 
+            de negócio. Os "direitos" (ou pós-condições) são os benefícios oferecidos ao requisitante do método, 
+            ou seja, o resultado de sua execução. Os "deveres", são as pré-condições que o requisitante deve respeitar 
+            para que o método realize o serviço requisitado.</remarks>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsTrue``1(System.Boolean,System.Object[])">
+            <summary>
+            Garante que a condição especificada é true. A asserção falha se a condição for false. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="condition">A condição para verificar se é true.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsFalse``1(System.Boolean,System.Object[])">
+            <summary>
+            Garante que a condição especificada é false. A asserção falha se a condição for true. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="condition">A condição para verificar se é false.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsNull``1(System.Object,System.Object[])">
+            <summary>
+            Garante que o objeto especificado é null. A asserção falha se ele não for null. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="value">O objeto para verificar se é null.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsNotNull``1(System.Object,System.Object[])">
+            <summary>
+            Garante que o objeto especificado não é null. A asserção falha se ele for null. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="value">O objeto para verificar se não é null.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsNotNullNorEmpty``1(System.String,System.Object[])">
+            <summary>
+            Garante que a string especificada não é nula nem vazia. A asserção falha se ela for nula ou vazia. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="value">Objeto string a ser verificado.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.AreEqual``2(``0,``0,System.Object[])">
+            <summary>
+            Garante que os objetos especificados são iguais. A asserção falha se pelo menos um dos objetos for nulo ou se o resultado do
+            método object.Equals for false. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="T">O tipo dos objetos a serem comparados.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="left">O objeto a ser comparado com o segundo parâmetro.</param>
+            <param name="right">O objeto a ser comparado com o primeiro parâmetro.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.AreNotEqual``2(``0,``0,System.Object[])">
+            <summary>
+            Garante que os objetos especificados não são iguais. A asserção falha se pelo menos um dos objetos for nulo ou se o resultado do
+            método object.Equals for true. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="T">O tipo dos objetos a serem comparados.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="left">O objeto a ser comparado com o segundo parâmetro.</param>
+            <param name="right">O objeto a ser comparado com o primeiro parâmetro.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.Any``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean},System.Object[])">
+            <summary>
+            Garante que uma coleção possui pelo menos um item que atende ao predicado especificado. A asserção falha se a coleção for nula ou se nenhum 
+            item atender ao predicado. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="T">O tipo dos objetos existentes na coleção.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="collection">Coleção a ser testada.</param>
+            <param name="predicate">Predicado que pelo menos um item da coleção deve satisfazer.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.None``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean},System.Object[])">
+            <summary>
+            Garante que nenhum um item da coleção atende ao predicado especificado. A asserção falha se a coleção for nula ou se pelo menos 
+            um item atender ao predicado. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="T">O tipo dos objetos existentes na coleção.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="collection">Coleção a ser testada.</param>
+            <param name="predicate">Predicado que nenhum item da coleção pode satisfazer.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.All``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean},System.Object[])">
+            <summary>
+            Garante que todos os itens da coleção atendam ao predicado especificado. A asserção falha se a coleção for nula ou se pelo menos um
+            item não atender ao predicado. Dispara uma exceção se a asserção falhar.
+            </summary>
+            <typeparam name="T">O tipo dos objetos existentes na coleção.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="collection">Coleção a ser testada.</param>
+            <param name="predicate">Predicado que todos os itens da coleção devem satisfazer.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsInstanceOfType``2(System.Object,System.Object[])">
+            <summary>
+            Garante que um objeto é uma instância do tipo especificado. A asserção falha se o objeto, ou seus pais na cadeia de herança, não herdam ou implementam o tipo especificado.
+            </summary>
+            <typeparam name="T">O tipo a ser comparado com o tipo do objeto.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="obj">Objeto a ser testado.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.IsNotInstanceOfType``2(System.Object,System.Object[])">
+            <summary>
+            Garante que um objeto não é uma instância do tipo especificado. A asserção falha se o objeto, ou seus pais na cadeia de herança, herdam ou implementam o tipo especificado.
+            </summary>
+            <typeparam name="T">O tipo a ser comparado com o tipo do objeto.</typeparam>
+            <typeparam name="TException">O tipo da exceção que deve ser disparada se a asserção falhar.</typeparam>
+            <param name="obj">Objeto a ser testado.</param>
+            <param name="exceptionArgs">Array de parâmetros que serão passados para o construtor de <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.ThrowException``1(System.Object[])">
+            <summary>
+            Dispara uma exceção do tipo <typeparamref name="TException"/> contendo a lista de 
+            argumentos definidos em <paramref name="exceptionArgs"/>.
+            </summary>
+            <typeparam name="TException">Tipo da exceção a ser disparada.</typeparam>
+            <param name="exceptionArgs">Lista de argumentos que devem ser enviados ao construtor do tipo <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Ao tentar criar uma instância do tipo <typeparamref name="TException"/>, sendo que nenhum de seus construtores 
+            aceita os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+        <member name="M:Jano.ContractProgramming.Assert.EnsureExceptionCreation``1(System.Object[])">
+            <summary>
+            Usado apenas em modo DEBUG para garantir que é possível criar uma instância da exceção desejada.
+            </summary>
+            <typeparam name="TException">Tipo da exceção a ser testada.</typeparam>
+            <param name="exceptionArgs">Lista de argumentos que devem ser enviados ao construtor do tipo <typeparamref name="TException"/>.</param>
+            <exception cref="T:System.ArgumentException">
+            Se não for possível criar uma instância do tipo <typeparamref name="TException"/>
+            com os argumentos fornecidos em <paramref name="exceptionArgs"/>.
+            </exception>
+        </member>
+    </members>
+</doc>

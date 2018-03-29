@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jano.ConnectionStrings.v3.0</name>
+    </assembly>
+    <members>
+        <member name="T:Jano.ConnectionStrings.CsConfiguration">
+            <summary>
+            Possui as propriedades de configuração deste assembly. 
+            É um wrapper para <see cref="T:Jano.ConnectionStrings.CsConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsConfiguration.#cctor">
+            <summary>
+            Construtor padrão.
+            </summary>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsConfiguration.Reload">
+            <summary>
+            Carrega as propriedades desta classe com as informações presentes no arquivo 
+            de configuração da aplicação.
+            </summary>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsConfiguration.Reset">
+            <summary>
+            Carrega as propriedades desta classe com valores default.
+            </summary>
+        </member>
+        <member name="P:Jano.ConnectionStrings.CsConfiguration.ProductionEnvironment">
+            <summary>
+            Se true, determina que a classe <see cref="T:Jano.ConnectionStrings.CsFactory"/> deve retornar as strings de conexão
+            dos servidores de produção. Em caso contrário, serão retornadas as strings de conexão com os servidores
+            de desenvolvimento. O default é false.
+            </summary>
+        </member>
+        <member name="T:Jano.ConnectionStrings.CsConfigurationSection">
+            <summary>
+            Possui as propriedades de configuração deste assembly.
+            </summary>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsConfigurationSection.Get">
+            <summary>
+            Obtêm um objeto <see cref="T:Jano.ConnectionStrings.CsConfigurationSection"/> contendo as configurações
+            realizadas pelo usuário na seção "jano.connectionstrings" do arquivo de configuração da aplicação.
+            Se esta seção não estiver presente no arquivo de configuração, um objeto <see cref="T:Jano.ConnectionStrings.CsConfigurationSection"/>
+            será retornado com os valores default de suas propriedades.
+            </summary>
+            <returns>
+            Um objeto <see cref="T:Jano.ConnectionStrings.CsConfigurationSection"/> contendo as configurações
+            realizadas pelo usuário na seção "jano.connectionstrings" do arquivo de configuração da aplicação.
+            Se esta seção não estiver presente no arquivo de configuração, um objeto <see cref="T:Jano.ConnectionStrings.CsConfigurationSection"/>
+            será retornado com os valores default de suas propriedades.
+            </returns>
+        </member>
+        <member name="P:Jano.ConnectionStrings.CsConfigurationSection.ProductionEnvironment">
+            <summary>
+            Se true, determina que a classe <see cref="T:Jano.ConnectionStrings.CsFactory"/> deve retornar as strings de conexão
+            dos servidores de produção. Em caso contrário, serão retornadas as strings de conexão com os servidores
+            de desenvolvimento. O default é false.
+            </summary>
+        </member>
+        <member name="T:Jano.ConnectionStrings.CsFactory">
+            <summary>
+            Fornece métodos para criação de strings de conexão comumente utilizadas nas aplicações da empresa.
+            </summary>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.Portal">
+            <summary>
+            Cria uma string de conexão com o database portal do Microvix ERP, utilizando o usuário "micportal".
+            </summary>
+            <returns>Uma string de conexão com o database portal do Microvix ERP, utilizando o usuário "micportal".</returns>
+            <remarks>
+            A string de conexão retornada por este método pode ser diferente de acordo com o valor da propriedade
+            <see cref="P:Jano.ConnectionStrings.CsConfigurationSection.ProductionEnvironment"/> no arquivo de configuração da 
+            aplicação. Se esta propriedade for true, será retornada uma string de conexão para o servidor de produção.
+            Em caso contrário, será retornada uma string de conexão para o servidor de desenvolvimento.
+            </remarks>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.Erp(System.Int32)">
+            <summary>
+            Cria uma string de conexão com o database do Microvix ERP, utilizando o usuário "mic".
+            </summary>
+            <param name="portalId">Número do portal que se deseja obter a string de conexão.</param>
+            <returns>Uma string de conexão com o database do ERP, utilizando o usuário "mic".</returns>
+            <remarks>
+            A string de conexão retornada por este método pode ser diferente de acordo com o valor da propriedade
+            <see cref="P:Jano.ConnectionStrings.CsConfigurationSection.ProductionEnvironment"/> no arquivo de configuração da 
+            aplicação. Se esta propriedade for true, será retornada uma string de conexão para o servidor de produção.
+            Em caso contrário, será retornada uma string de conexão para o servidor de desenvolvimento.
+            </remarks>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.PortalPos(System.Int32)">
+            <summary>
+            Cria uma string de conexão com o database do Portal POS, utilizando o usuário "mic03pos" no
+            database de produção e o "mic" no database de desenvolvimento.
+            </summary>
+            <returns>Uma string de conexão com o database do Portal POS, utilizando o usuário "mic03pos" no
+            database de produção e o "mic" no database de desenvolvimento.</returns>
+            <remarks>
+            A string de conexão retornada por este método pode ser diferente de acordo com o valor da propriedade
+            <see cref="P:Jano.ConnectionStrings.CsConfigurationSection.ProductionEnvironment"/> no arquivo de configuração da 
+            aplicação. Se esta propriedade for true, será retornada uma string de conexão para o servidor de produção.
+            Em caso contrário, será retornada uma string de conexão para o servidor de desenvolvimento.
+            </remarks>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.CodimeIntegration(System.Int32)">
+            <summary>
+            Cria uma string de conexão para utilização na rotina de integração de pedidos de compra da Touch com a Codime. 
+            Este método só retorna a string de conexão para o ambiente de produção.
+            </summary>
+            <param name="portalId">Número do portal da franqueadora.</param>
+            <returns>Uma string de conexão para utilização na rotina de integração de pedidos de compra da Touch com a Codime.</returns>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.ReportViewer(System.Int32)">
+            <summary>
+            Cria uma string de conexão utilizada pelo Report Viewer para gerar seus relatórios.
+            Este método só retorna a string de conexão para o ambiente de produção.
+            </summary>
+            <param name="portalId">Número do portal onde o Report Viewer se conectará.</param>
+            <returns>Uma string de conexão utilizada pelo Report Viewer para gerar seus relatórios.</returns>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.GetDatabaseAddress(System.Int32)">
+            <summary>
+            Obtêm o endereço do servidor de banco de dados onde se encontra a base de dados do Microvix ERP do portal
+            recebido como argumento.
+            </summary>
+            <param name="portalId">Número do portal que se deseja obter o endereço do servidor de banco de dados.</param>
+            <returns>
+            O endereço do servidor de banco de dados onde se encontra a base de dados do Microvix ERP do portal
+            recebido como argumento ou null caso esta informação não seja encontrada.
+            </returns>
+        </member>
+        <member name="M:Jano.ConnectionStrings.CsFactory.CreateConnectionString(System.String,System.String,System.String,System.String)">
+            <summary>
+            Cria uma string de conexão para o SQL Server contendo os dados fornecidos.
+            </summary>
+            <param name="dataSource">Endereço de rede do servidor SQL Server que será acessado.</param>
+            <param name="initialCatalog">Nome da base de dados a ser acessada.</param>
+            <param name="userId">Nome de usuário utilizado para se autenticar na base de dados.</param>
+            <param name="password">Senha utilizada para se autenticar na base de dados.</param>
+            <returns>Uma string de conexão com o SQL Server, montada com os dados fornecidos.</returns>
+        </member>
+    </members>
+</doc>
