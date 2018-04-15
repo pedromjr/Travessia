@@ -12,10 +12,30 @@ namespace WebApi.Controllers
         [EnableCors("*", "*", "*")]
         [MVC.Route("all")]
         [HttpGet]
+        public GTUser AuthenticateAndGetUser(string login, string password)
+        {
+            GTUser user = null;
+            using (UserBusiness ub = new UserBusiness())
+            {
+                if (ub.AuthenticateUser(login, password))
+                    user = ub.GetUserByLogin(login);
+            }
+
+            return user;
+        }
+
+        [EnableCors("*", "*", "*")]
+        [MVC.Route("all")]
+        [HttpGet]
         public List<GTUser> GetAll()
         {
-            UserBusiness ub = new UserBusiness();
-            return ub.GetAllUsers();
+            List<GTUser> users = new List<GTUser>();
+            using (UserBusiness ub = new UserBusiness())
+            {
+                users = ub.GetAllUsers();
+            }
+
+            return users;
         }
 
         [EnableCors("*", "*", "*")]
@@ -23,8 +43,10 @@ namespace WebApi.Controllers
         [HttpPost]
         public void Create(GTUser user)
         {
-            UserBusiness ub = new UserBusiness();
-            ub.CreateUser(user);
+            using (UserBusiness ub = new UserBusiness())
+            {
+                ub.CreateUser(user);
+            }
         }
 
         [EnableCors("*", "*", "*")]
@@ -32,8 +54,10 @@ namespace WebApi.Controllers
         [HttpPut]
         public void Edit(GTUser user)
         {
-            UserBusiness ub = new UserBusiness();
-            ub.UpdateUser(user);
+            using (UserBusiness ub = new UserBusiness())
+            {
+                ub.UpdateUser(user);
+            }
         }
 
         [EnableCors("*", "*", "*")]
@@ -41,8 +65,10 @@ namespace WebApi.Controllers
         [HttpDelete]
         public void Delete(string id)
         {
-            UserBusiness ub = new UserBusiness();
-            ub.DeleteUser(int.Parse(id));
+            using (UserBusiness ub = new UserBusiness())
+            {
+                ub.DeleteUser(int.Parse(id));
+            }
         }
     }
 }

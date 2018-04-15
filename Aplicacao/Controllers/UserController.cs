@@ -1,9 +1,9 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 
-namespace Aplicacao.Controllers
+namespace WebApplication.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseAsyncController
     {
         public static string ApiAddress = ConfigurationManager.AppSettings.Get("ApiAddress");
 

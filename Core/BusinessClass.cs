@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class BusinessClass
+    public class BusinessClass : IDisposable
     {
         public BusinessClass()
         {

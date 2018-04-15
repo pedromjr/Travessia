@@ -1,7 +1,4 @@
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\ApplicationInsights.config
-C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Aplicacao.dll.config
-C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Aplicacao.dll
-C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Aplicacao.pdb
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Antlr3.Runtime.dll
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Microsoft.AI.DependencyCollector.dll
@@ -44,8 +41,6 @@ C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Microsoft.AI.WindowsServer.x
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\bin\Microsoft.AI.Web.xml
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
 C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\obj\Debug\WebApplication.csproj.CoreCompileInputs.cache
-C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\obj\Debug\Aplicacao.dll
-C:\Users\Pedro\Source\Repos\Travessia\Aplicacao\obj\Debug\Aplicacao.pdb
 C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\Entities.dll
 C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\Entities.pdb
 C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\pt-br\System.Web.Helpers.resources.dll
@@ -61,3 +56,18 @@ C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\System.Web.Http.Cors.dll
 C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\System.Web.Http.Cors.xml
 C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\pt-br\System.Net.Http.Formatting.resources.dll
 C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\pt-br\System.Web.Http.resources.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\Core.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\DataCore.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\EntityFramework.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\Core.pdb
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\Core.dll.config
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\DataCore.pdb
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\DataCore.dll.config
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\EntityFramework.xml
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\WebApplication.dll.config
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\WebApplication.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\WebApplication.pdb
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\obj\Debug\WebApplication.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\obj\Debug\WebApplication.pdb
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\EntityFramework.SqlServer.dll
+C:\Users\Pedro\source\repos\Travessia\Aplicacao\bin\EntityFramework.SqlServer.xml
